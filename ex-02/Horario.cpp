@@ -1,6 +1,14 @@
 #include "Horario.hpp"
 
-//Construtora
+//Construtoras
+Horario::Horario(int h, int m)
+{
+    if(!setHora(h))
+        exit(0);
+    if(!setMin(m))
+        exit(0);
+}
+
 Horario::Horario() :
 hora(0), min(0)
 {

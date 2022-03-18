@@ -10,7 +10,8 @@ private:
     int hora, min;
 
 public:
-    //Construtora
+    //Construtoras
+    Horario(int h, int m);
     Horario();
 
     //Destrutora
