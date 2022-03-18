@@ -27,8 +27,5 @@ public:
     //Calcula o custo em cada faixa de horário
     float calculaCusto() const;
 
-    //Verfica se as entradas de horas e minutos são válidas
-    bool entradaEhValida(int h, int m) const;
-
     void executar();
 };
