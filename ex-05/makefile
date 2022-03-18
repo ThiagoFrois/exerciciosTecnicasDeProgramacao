@@ -1,2 +1,2 @@
 all:
-	g++ -o exe *.cpp *.h && ./exe && rm exe
+	g++ -o exe *.cpp && ./exe && rm exe
