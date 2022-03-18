@@ -62,7 +62,7 @@ bool Horario::ehValido(int h, int m) const
 
 bool Horario::horaEhValido(int h) const
 {
-    if(h < 0 && h > MAX_HORA){
+    if(h < 0 || h > MAX_HORA){
         std::cout << "Hora(s) inválida!" << std::endl;
         return false;
     }
@@ -73,7 +73,7 @@ bool Horario::horaEhValido(int h) const
 
 bool Horario::minEhValido(int m) const
 {
-    if(m < 0 && m > MAX_MIN){
+    if(m < 0 || m > MAX_MIN){
         std::cout << "Minuto(s) inválido!" << std::endl;
         return false;
     }

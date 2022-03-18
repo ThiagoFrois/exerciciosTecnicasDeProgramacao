@@ -15,14 +15,16 @@ Principal::~Principal()
 //Funções Set's
 void Principal::setHorarioEntrada(int h, int m)
 {
-    entrada.setHora(h);
-    entrada.setMin(m);
+    if(entrada.setHora(h) && entrada.setMin(m))
+        return;
+    exit(0);
 }
 
 void Principal::setHorarioSaida(int h, int m)
 {
-    saida.setHora(h);
-    saida.setMin(m);
+    if(saida.setHora(h) && saida.setMin(m))
+        return;
+    exit(0);
 }
 
 void Principal::setHorarios()
