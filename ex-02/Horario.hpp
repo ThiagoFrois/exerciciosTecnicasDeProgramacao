@@ -27,4 +27,9 @@ public:
 
     //Calcula o intervalo de tempo com um horário dado
     int calculaIntervalo(Horario horario) const;
+
+    //Verifica se entrada de hora e minuto são válidos
+    bool ehValido(int h, int m) const;
+    bool horaEhValido(int h) const;
+    bool minEhValido(int m) const;
 };
