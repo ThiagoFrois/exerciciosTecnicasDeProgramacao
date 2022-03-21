@@ -6,7 +6,8 @@ private:
     int idade, dia, mes, ano;
     std::string nome;
 public:
-    //Construtora
+    //Construtoras
+    Pessoa(int diaNas, int mesNas, int anoNas, std::string n);
     Pessoa();
 
     //Destrutora

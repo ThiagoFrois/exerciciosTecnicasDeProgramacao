@@ -1,5 +1,13 @@
 #include "Pessoa.hpp"
 
+Pessoa::Pessoa(int diaNas, int mesNas, int anoNas, std::string n)
+{
+    if(!setDataNascimento(diaNas, mesNas, anoNas))
+        exit(0);
+    nome = n;
+
+}
+
 Pessoa::Pessoa() :
 idade{0}, dia{0}, mes{0}, ano{0}, nome{""}
 {
@@ -23,12 +31,12 @@ bool Pessoa::setDia(int d)
         std::cout << "Dia incorreto!" << std::endl;
         return false;
     }
+    dia = d;
     return true;
 }
 
 bool Pessoa::setMes(int m)
 {
-    std::cout << "Mes " << m << std::endl;
     if(m < 1 || m > 12)
     {
         std::cout << "Mes incorreto!" << std::endl;
@@ -89,11 +97,11 @@ int Pessoa::calculaIdade(int diaAt, int mesAt, int anoAt)
 {
     int i = anoAt - ano;
 
-    if(mes < mesAt)
+    if(mes > mesAt)
         i--;
     else if(mes == mesAt)
     {
-        if(dia < diaAt)
+        if(dia > diaAt)
             i--;
     }
     return i;
