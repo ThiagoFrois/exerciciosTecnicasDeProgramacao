@@ -3,13 +3,8 @@
 //Construtoras
 Horario::Horario(int h, int m)
 {
-    ehValido(h, m);
-}
-
-Horario::Horario() :
-hora(0), min(0)
-{
-
+    if(!setHora(h) || !setMin(m))
+        exit(0);
 }
 
 //Destrutora
@@ -65,6 +60,7 @@ bool Horario::ehValido(int h, int m) const
     return horaEhValido(h) && minEhValido(m);
 }
 
+//Verifica se a entrada de horas é válida
 bool Horario::horaEhValido(int h) const
 {
     if(h < 0 || h > MAX_HORA){
@@ -74,8 +70,7 @@ bool Horario::horaEhValido(int h) const
     return true;
 }
 
-
-
+//Verifica se a entrada de minutos é válida
 bool Horario::minEhValido(int m) const
 {
     if(m < 0 || m > MAX_MIN){

@@ -62,18 +62,18 @@ int Principal::calculaIntervalo() const
     return entrada.calculaIntervalo(saida);
 }
 
-//Calcula o custo em cada faixa de horário
+//Calcula o custo de um intervalo de horários
 float Principal::calculaCusto() const
 {
     float custo;
     int intervalo = calculaIntervalo();
     if(intervalo < 3*MIN_POR_HORA)
-        custo = 4.5; // Custo base
+        custo = 4.5; // Custo padrão inferior
     else if(intervalo >= 3*MIN_POR_HORA && intervalo <= 12*MIN_POR_HORA){
-        custo = 4.5 + ((intervalo - MIN_POR_HORA*3)/15)*0.75; //Custo base + número de bloco de 15 minutos no tempo excendente * custo
+        custo = 4.5 + ((intervalo - MIN_POR_HORA*3)/15)*0.75; //Custo base + número de bloco de 15 minutos de tempo excendente * custo
     }
     else
-        custo = 33.0; // Custo alto
+        custo = 33.0; // Custo padrão superior
 
     return custo;
 }

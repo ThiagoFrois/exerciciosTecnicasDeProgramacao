@@ -36,14 +36,17 @@ void Principal::setHorarios()
     std::cin >> h >> m;
     std::cout << std::endl;
 
-    setHorarioEntrada(h, m);
+    //setHorarioEntrada(h, m);
+    entrada = Horario(h, m);
+
 
     //Pede o horário de saída
     std::cout << "Escreva o horario de saida (Formato: hh mm) : ";
     std::cin >> h >> m;
     std::cout << std::endl;
 
-    setHorarioSaida(h, m);
+    saida = Horario(h, m);
+    //setHorarioSaida(h, m);
 }
 //Funções Get's
 Horario Principal::getHorarioEntrada() const
@@ -62,18 +65,18 @@ int Principal::calculaIntervalo() const
     return entrada.calculaIntervalo(saida);
 }
 
-//Calcula o custo em cada faixa de horário
+//Calcula o custo de um intervalo de horários
 float Principal::calculaCusto() const
 {
     float custo;
     int intervalo = calculaIntervalo();
     if(intervalo < 3*MIN_POR_HORA)
-        custo = 4.5; // Custo base
+        custo = 4.5; // Custo padrão inferior
     else if(intervalo >= 3*MIN_POR_HORA && intervalo <= 12*MIN_POR_HORA){
         custo = 4.5 + ((intervalo - MIN_POR_HORA*3)/15)*0.75; //Custo base + número de bloco de 15 minutos no tempo excendente * custo
     }
     else
-        custo = 33.0; // Custo alto
+        custo = 33.0; // Custo padrão superior
 
     return custo;
 }

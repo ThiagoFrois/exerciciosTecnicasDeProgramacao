@@ -24,7 +24,7 @@ public:
     //Calcula a diferença entre horarios
     int calculaIntervalo() const;
 
-    //Calcula o custo em cada faixa de horário
+    //Calcula o custo de um intervalo de horários
     float calculaCusto() const;
 
     void executar();

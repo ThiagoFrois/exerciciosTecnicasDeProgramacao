@@ -50,7 +50,7 @@ int Horario::getMin() const
 int Horario::calculaIntervalo(Horario horario) const
 {
     int intervalo = (horario.getHora() - hora)*MIN_POR_HORA + horario.getMin() - min;
-    //Retorna a diferença entre as horas (transformadas em minutos) + diferença entre os minutos
+    //Retorna a diferença entre as horas (transformada em minutos) + diferença entre os minutos
     return intervalo > 0 ? intervalo : intervalo + MIN_POR_DIA;
 }
 
@@ -60,6 +60,7 @@ bool Horario::ehValido(int h, int m) const
     return horaEhValido(h) && minEhValido(m);
 }
 
+//Verifica se a entrada horas é válida
 bool Horario::horaEhValido(int h) const
 {
     if(h < 0 || h > MAX_HORA){
@@ -69,8 +70,7 @@ bool Horario::horaEhValido(int h) const
     return true;
 }
 
-
-
+//Verifica se a entrada minutos é válida
 bool Horario::minEhValido(int m) const
 {
     if(m < 0 || m > MAX_MIN){
