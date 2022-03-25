@@ -1,0 +1,6 @@
+﻿  Horario.cpp
+  main.cpp
+  Principal.cpp
+C:\Users\thiag\Music\exercicios\ex-02\ex-02_VS\Principal.cpp(76,21): warning C4244: '=': conversão de 'double' para 'float', possível perda de dados
+  Gerando Código...
+  ex-02_visualStudio.vcxproj -> C:\Users\thiag\Music\exercicios\ex-02\ex-02_VS\ex-02_visualStudio\x64\Debug\ex-02_visualStudio.exe

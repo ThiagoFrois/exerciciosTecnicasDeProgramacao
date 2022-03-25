@@ -1,0 +1,8 @@
+﻿  Carro.cpp
+C:\Users\thiag\Music\exercicios\ex-09\ex-09_VS\Carro.cpp(76,45): warning C4244: '+=': conversão de 'float' para 'int', possível perda de dados
+C:\Users\thiag\Music\exercicios\ex-09\ex-09_VS\Carro.cpp(77,34): warning C4244: '+=': conversão de 'float' para 'int', possível perda de dados
+C:\Users\thiag\Music\exercicios\ex-09\ex-09_VS\Carro.cpp(99,19): warning C4244: 'inicializando': conversão de 'time_t' para 'unsigned int', possível perda de dados
+  main.cpp
+  Principal.cpp
+  Gerando Código...
+  ex-09_visualStudio.vcxproj -> C:\Users\thiag\Music\exercicios\ex-09\ex-09_VS\ex-09_visualStudio\x64\Debug\ex-09_visualStudio.exe
