@@ -3,8 +3,14 @@
 //Construtoras
 Horario::Horario(int h, int m)
 {
-    if(!setHora(h) || !setMin(m))
-        exit(0);
+    if (!setHora(h) || !setMin(m))
+        exit(-1);
+}
+
+Horario::Horario() :
+hora(0), min(0)
+{
+
 }
 
 //Destrutora
@@ -17,7 +23,7 @@ Horario::~Horario()
 bool Horario::setHora(int h)
 {
     //Testa se h é um valor de hora válido
-    if(horaEhValido(h))
+    if(h >= 0 && h <= MAX_HORA)
     {
         hora = h;
         return true;
@@ -28,7 +34,7 @@ bool Horario::setHora(int h)
 bool Horario::setMin(int m)
 {
     //Testa se m é um valor de minuto válido
-    if(minEhValido(m))
+    if(m >= 0 && m <= MAX_MIN)
     {
         min = m;
         return true;
@@ -37,45 +43,22 @@ bool Horario::setMin(int m)
 }
 
 //Funções Get's
-int Horario::getHora() const
+int Horario::getHora()
 {
     return hora;
 }
 
-int Horario::getMin() const
+int Horario::getMin()
 {
     return min;
 }
 
-int Horario::calculaIntervalo(Horario horario) const
+//Calcula o intervalo de tempo com um horário dado
+int Horario::calculaIntervalo(Horario horario)
 {
+    //Calcula a diferença entre as horas (transformada em minutos) + diferença entre os minutos
     int intervalo = (horario.getHora() - hora)*MIN_POR_HORA + horario.getMin() - min;
-    //Retorna a diferença entre as horas (transformadas em minutos) + diferença entre os minutos
+
+    //Se o intervalo é negativo, passou mais de um dia.
     return intervalo > 0 ? intervalo : intervalo + MIN_POR_DIA;
-}
-
-//Verifica se a entrada de hora e minuto são válidos
-bool Horario::ehValido(int h, int m) const
-{
-    return horaEhValido(h) && minEhValido(m);
-}
-
-//Verifica se a entrada de horas é válida
-bool Horario::horaEhValido(int h) const
-{
-    if(h < 0 || h > MAX_HORA){
-        std::cout << "Hora(s) inválida!" << std::endl;
-        return false;
-    }
-    return true;
-}
-
-//Verifica se a entrada de minutos é válida
-bool Horario::minEhValido(int m) const
-{
-    if(m < 0 || m > MAX_MIN){
-        std::cout << "Minuto(s) inválido!" << std::endl;
-        return false;
-    }
-    return true;
 }

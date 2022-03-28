@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Horario.hpp"
 
 class Principal
@@ -15,17 +17,15 @@ public:
     //Funções Set's
     void setHorarioEntrada(int h, int m);
     void setHorarioSaida(int h, int m);
+
+    //Obtém dos valores do horário de entrada e saída pelo terminal
     void setHorarios();
 
-    //Funções Get's
-    Horario getHorarioEntrada() const;
-    Horario getHorarioSaida() const;
-
     //Calcula a diferença entre horarios
-    int calculaIntervalo() const;
+    int calculaIntervalo();
 
-    //Calcula o custo de um intervalo de horarários
-    float calculaCusto() const;
+    //Calcula o custo de um intervalo de horarios
+    float calculaCusto();
 
     void executar();
 };

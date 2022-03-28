@@ -15,18 +15,17 @@ Principal::~Principal()
 //Funções Set's
 void Principal::setHorarioEntrada(int h, int m)
 {
-    if(entrada.setHora(h) && entrada.setMin(m))
-        return;
-    exit(0);
+    if (!entrada.setHora(h) || !entrada.setMin(m))
+        exit(-1);
 }
 
 void Principal::setHorarioSaida(int h, int m)
 {
-    if(saida.setHora(h) && saida.setMin(m))
-        return;
-    exit(0);
+    if (!saida.setHora(h) || !saida.setMin(m))
+        exit(-1);
 }
 
+//Obtém dos valores do horário de entrada e saída pelo terminal
 void Principal::setHorarios()
 {
     int h, m;
@@ -45,28 +44,12 @@ void Principal::setHorarios()
 
     setHorarioSaida(h, m);
 }
-//Funções Get's
-Horario Principal::getHorarioEntrada() const
-{
-    return entrada;
-}
-
-Horario Principal::getHorarioSaida() const
-{
-    return saida;
-}
-
-//Calcula o intervalo entre horários
-int Principal::calculaIntervalo() const
-{
-    return entrada.calculaIntervalo(saida);
-}
 
 //Calcula o custo de um intervalo de horários
-float Principal::calculaCusto() const
+float Principal::calculaCusto()
 {
     float custo;
-    int intervalo = calculaIntervalo();
+    int intervalo = entrada.calculaIntervalo(saida);
     if(intervalo < 3*MIN_POR_HORA)
         custo = 4.5; // Custo padrão inferior
     else if(intervalo >= 3*MIN_POR_HORA && intervalo <= 12*MIN_POR_HORA){
