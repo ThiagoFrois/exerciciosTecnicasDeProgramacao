@@ -1,0 +1,3 @@
+C:\Users\thiag\Music\exercicios\ex-02\ex-02_VS\ex-02_visualStudio\x64\Debug\ex-02_visualStudio.exe
+C:\Users\thiag\Documents\repositoriosGIT\exerciciosTecnicasDeProgramacao\ex-02\ex-02_VS\ex-02_visualStudio\x64\Debug\ex-02_visualStudio.exe
+C:\Users\thiag\Documents\repositoriosGIT\exerciciosTecnicasDeProgramacao\ex-02\ex-02_c++\ex-02_final\ex-02_VS\ex-02_visualStudio\x64\Debug\ex-02_visualStudio.exe
