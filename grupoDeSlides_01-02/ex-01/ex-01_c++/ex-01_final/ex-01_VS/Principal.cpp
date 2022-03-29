@@ -31,16 +31,16 @@ void Principal::setHorarios()
     int h, m;
 
     //Pede o horário de entrada
-    std::cout << "Escreva o horario de entrada (Formato: hh mm) :";
-    std::cin >> h >> m;
-    std::cout << std::endl;
+    cout << "Escreva o horario de entrada (Formato: hh mm) :";
+    cin >> h >> m;
+    cout << endl;
 
     setHorarioEntrada(h, m);
 
     //Pede o horário de saída
-    std::cout << "Escreva o horario de saida (Formato: hh mm) : ";
-    std::cin >> h >> m;
-    std::cout << std::endl;
+    cout << "Escreva o horario de saida (Formato: hh mm) : ";
+    cin >> h >> m;
+    cout << endl;
 
     setHorarioSaida(h, m);
 }
@@ -64,5 +64,5 @@ float Principal::calculaCusto()
 void Principal::executar()
 {
     setHorarios();
-    std::cout << "O custo foi de R$" << calculaCusto() << std::endl;
+    cout << "O custo foi de R$" << calculaCusto() << endl;
 }

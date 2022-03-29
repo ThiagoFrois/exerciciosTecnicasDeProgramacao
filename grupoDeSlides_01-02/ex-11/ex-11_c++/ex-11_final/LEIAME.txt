@@ -8,6 +8,7 @@ a outra versão no terminal digite make para executar o arquivo makefile.
 
 CONCEITOS UTILIZADOS:
 
+* Classe
 * Parâmetros privados
 * Métodos públicos
 * Construtor vazio

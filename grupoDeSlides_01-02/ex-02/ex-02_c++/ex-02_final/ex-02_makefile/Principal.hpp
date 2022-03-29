@@ -8,7 +8,7 @@ private:
     Horario entrada;
     Horario saida;
 public:
-    //Construtora
+    //Construtoras
     Principal();
 
     //Destrutora

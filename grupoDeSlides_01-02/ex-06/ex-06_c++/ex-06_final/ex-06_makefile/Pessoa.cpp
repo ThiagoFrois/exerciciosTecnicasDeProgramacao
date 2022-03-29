@@ -1,15 +1,19 @@
 #include "Pessoa.hpp"
 
-Pessoa::Pessoa(int diaNas, int mesNas, int anoNas, std::string n)
+Pessoa::Pessoa(int diaNas, int mesNas, int anoNas, const char* n)
 {
     if(!setDataNascimento(diaNas, mesNas, anoNas))
         exit(0);
-    nome = n;
+    strcpy(nome, n);
 
+    time_t tSac = time(NULL);
+    tm tms = *localtime(&tSac);
+
+    setIdade(tms.tm_mday, tms.tm_mon, tms.tm_year + 1900);
 }
 
 Pessoa::Pessoa() :
-idade{0}, dia{0}, mes{0}, ano{0}, nome{""}
+idade(0), dia(0), mes(0), ano(0), nome("")
 {
 
 }
@@ -28,7 +32,7 @@ bool Pessoa::setDia(int d)
 {
     if(d < 0 || d > 31)
     {
-        std::cout << "Dia incorreto!" << std::endl;
+        cout << "Dia incorreto!" << endl;
         return false;
     }
     dia = d;
@@ -39,7 +43,7 @@ bool Pessoa::setMes(int m)
 {
     if(m < 1 || m > 12)
     {
-        std::cout << "Mes incorreto!" << std::endl;
+        cout << "Mes incorreto!" << endl;
         return false;
     }
     mes = m;
@@ -50,16 +54,16 @@ bool Pessoa::setAno(int a)
 {
     if(a < 0)
     {
-        std::cout << "Ano incorreto!" << std::endl;
+        cout << "Ano incorreto!" << endl;
         return false;
     }
     ano = a;
     return true;
 }
 
-void Pessoa::setNome(std::string n)
+void Pessoa::setNome(const char* n)
 {
-    nome = n;
+    strcpy(nome, n);
 }
 
 
@@ -68,27 +72,12 @@ bool Pessoa::setDataNascimento(int d, int m, int a)
     return setDia(d) && setMes(m) && setAno(a);
 }
 
-int Pessoa::getIdade() const
+int Pessoa::getIdade()
 {
     return idade;
 }
 
-int Pessoa::getDia() const
-{
-    return dia;
-}
-
-int Pessoa::getMes() const
-{
-    return mes;
-}
-
-int Pessoa::getAno() const
-{
-    return ano;
-}
-
-std::string Pessoa::getNome() const
+const char* Pessoa::getNome()
 {
     return nome;
 }
@@ -109,5 +98,5 @@ int Pessoa::calculaIdade(int diaAt, int mesAt, int anoAt)
 
 void Pessoa::printIdadeNome()
 {
-    std::cout << "A idade de " << getNome() << " é " << getIdade() << std::endl;
+    cout << "A idade de " << getNome() << " é " << getIdade() << endl;
 }

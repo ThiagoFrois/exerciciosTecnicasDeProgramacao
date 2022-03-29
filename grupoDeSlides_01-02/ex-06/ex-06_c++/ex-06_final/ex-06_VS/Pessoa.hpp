@@ -1,13 +1,19 @@
 #include <iostream>
 
+using std::cout;
+using std::cin;
+using std::endl;
+
+#pragma warning(disable : 4996)
+
 class Pessoa
 {
 private:
     int idade, dia, mes, ano;
-    std::string nome;
+    char nome[30];
 public:
     //Construtoras
-    Pessoa(int diaNas, int mesNas, int anoNas, std::string n);
+    Pessoa(int diaNas, int mesNas, int anoNas, const char* n);
     Pessoa();
 
     //Destrutora
@@ -17,14 +23,11 @@ public:
     bool setDia(int d);
     bool setMes(int m);
     bool setAno(int a);
-    void setNome(std::string n);
+    void setNome(const char* n);
     bool setDataNascimento(int i, int d, int a);
 
-    int getIdade() const;
-    int getDia() const;
-    int getMes() const;
-    int getAno() const;
-    std::string getNome() const;
+    int getIdade();
+    const char* getNome();
 
     int calculaIdade(int diaAt, int mesAt, int anoAt);
 

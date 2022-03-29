@@ -1,16 +1,19 @@
 #include "Pessoa.hpp"
 
+//Construtora
 Pessoa::Pessoa() :
-idade{0}, dia{0}, mes{0}, ano{0}, nome{""}
+idade(0), dia(0), mes(0), ano(0), nome("")
 {
 
 }
 
+//Destrutora
 Pessoa::~Pessoa()
 {
 
 }
 
+//Funções Set's
 void Pessoa::setIdade(int diaAt, int mesAt, int anoAt)
 {
     idade = calculaIdade(diaAt, mesAt, anoAt);
@@ -18,9 +21,10 @@ void Pessoa::setIdade(int diaAt, int mesAt, int anoAt)
 
 bool Pessoa::setDia(int d)
 {
+    //Testa se o dia está correto
     if(d < 0 || d > 31)
     {
-        std::cout << "Dia incorreto!" << std::endl;
+        cout << "Dia incorreto!" << endl;
         return false;
     }
     dia = d;
@@ -29,9 +33,10 @@ bool Pessoa::setDia(int d)
 
 bool Pessoa::setMes(int m)
 {
+    //Testa se o mês está correto
     if(m < 1 || m > 12)
     {
-        std::cout << "Mes incorreto!" << std::endl;
+        cout << "Mes incorreto!" << endl;
         return false;
     }
     mes = m;
@@ -40,18 +45,19 @@ bool Pessoa::setMes(int m)
 
 bool Pessoa::setAno(int a)
 {
+    //Testa se o ano está correto
     if(a < 0)
     {
-        std::cout << "Ano incorreto!" << std::endl;
+        cout << "Ano incorreto!" << endl;
         return false;
     }
     ano = a;
     return true;
 }
 
-void Pessoa::setNome(std::string n)
+void Pessoa::setNome(const char* n)
 {
-    nome = n;
+    strcpy(nome, n);
 }
 
 
@@ -60,31 +66,18 @@ bool Pessoa::setDataNascimento(int d, int m, int a)
     return setDia(d) && setMes(m) && setAno(a);
 }
 
-int Pessoa::getIdade() const
+//Funções Get's
+int Pessoa::getIdade()
 {
     return idade;
 }
 
-int Pessoa::getDia() const
-{
-    return dia;
-}
-
-int Pessoa::getMes() const
-{
-    return mes;
-}
-
-int Pessoa::getAno() const
-{
-    return ano;
-}
-
-std::string Pessoa::getNome() const
+const char* Pessoa::getNome()
 {
     return nome;
 }
 
+//Calcula a idade
 int Pessoa::calculaIdade(int diaAt, int mesAt, int anoAt)
 {
     int i = anoAt - ano;
@@ -99,7 +92,8 @@ int Pessoa::calculaIdade(int diaAt, int mesAt, int anoAt)
     return i;
 }
 
+//Imprime na tela de saída a idade e o nome
 void Pessoa::printIdadeNome()
 {
-    std::cout << "A idade de " << getNome() << " é " << getIdade() << std::endl;
+    cout << "A idade de " << nome << " é " << idade << endl;
 }

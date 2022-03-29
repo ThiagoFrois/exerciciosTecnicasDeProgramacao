@@ -4,6 +4,7 @@ class Principal
 {
 private:
     Pessoa Einstein, Newton;
+
 public:
     Principal();
     ~Principal();

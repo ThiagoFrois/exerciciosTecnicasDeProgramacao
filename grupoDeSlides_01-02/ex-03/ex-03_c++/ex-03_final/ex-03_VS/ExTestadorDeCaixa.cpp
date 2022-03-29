@@ -1,37 +1,35 @@
 #include "ExTestadorDeCaixa.hpp"
 
+//Construtor
 ExTestadorDeCaixa::ExTestadorDeCaixa()
 {
 
 }
 
+//Destrutor
 ExTestadorDeCaixa::~ExTestadorDeCaixa()
 {
 
 }
 
-void ExTestadorDeCaixa::setCaixa(int l,int a, int p, Caixa& c)
-{
-    c.setLargura(l);
-    c.setAltura(a);
-    c.setProfundidade(p);
-}
-
+//Obtém as dimensões de cada caixa
 void ExTestadorDeCaixa::perguntaEntradas()
 {
     int l, a, p;
 
-    std::cout << "Qual a largura, altura e profundidade da caixa 1: ";
-    std::cin >> l >> a >> p;
-    std::cout << std::endl;
+    cout << "Qual a largura, altura e profundidade da caixa 1: ";
+    cin >> l >> a >> p;
+    cout << endl;
 
-    setCaixa(l, a, p, c1);
+    if(!c1.setCaixa(l, a, p))
+        exit(-1);
 
-    std::cout << "Qual largura, altura e profundidade da caixa 2: ";
-    std::cin >> l >> a >> p;
-    std::cout << std::endl;
+    cout << "Qual largura, altura e profundidade da caixa 2: ";
+    cin >> l >> a >> p;
+    cout << endl;
 
-    setCaixa(l, a, p, c2);
+    if(!c2.setCaixa(l, a, p))
+        exit(-1);
 }
 
 void ExTestadorDeCaixa::executar()

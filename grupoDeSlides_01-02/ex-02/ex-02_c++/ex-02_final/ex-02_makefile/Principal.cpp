@@ -18,16 +18,16 @@ void Principal::setHorarios()
     int h, m;
 
     //Pede o horário de entrada
-    std::cout << "Escreva o horario de entrada (Formato: hh mm) :";
-    std::cin >> h >> m;
-    std::cout << std::endl;
+    cout << "Escreva o horario de entrada (Formato: hh mm) :";
+    cin >> h >> m;
+    cout << endl;
 
     entrada = Horario(h, m);
 
     //Pede o horário de saída
-    std::cout << "Escreva o horario de saida (Formato: hh mm) : ";
-    std::cin >> h >> m;
-    std::cout << std::endl;
+    cout << "Escreva o horario de saida (Formato: hh mm) : ";
+    cin >> h >> m;
+    cout << endl;
 
     saida = Horario(h, m);
 }
@@ -39,7 +39,7 @@ float Principal::calculaCusto()
     int intervalo = entrada.calculaIntervalo(saida);
     if(intervalo < 3*HORA_PARA_MIN)
         custo = 4.5; // Custo padrão inferior
-    else if(intervalo >= 3* HORA_PARA_MIN && intervalo <= 12*HORA_PARA_MIN){
+    else if(intervalo >= 3* HORA_PARA_MIN && intervalo <= 12* HORA_PARA_MIN){
         custo = 4.5 + ((intervalo - HORA_PARA_MIN *3)/15)*0.75; //Custo base + número de bloco de 15 minutos de tempo excendente * custo
     }
     else
@@ -51,5 +51,5 @@ float Principal::calculaCusto()
 void Principal::executar()
 {
     setHorarios();
-    std::cout << "O custo foi de R$" << calculaCusto() << std::endl;
+    cout << "O custo foi de R$" << calculaCusto() << endl;
 }

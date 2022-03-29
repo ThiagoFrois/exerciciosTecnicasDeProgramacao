@@ -1,1 +1,2 @@
 C:\Users\thiag\Music\exercicios\ex-06\ex-06_VS\ex-06_visualStudio\x64\Debug\ex-06_visualStudio.exe
+C:\Users\thiag\Documents\repositoriosGIT\exerciciosTecnicasDeProgramacao\grupoDeSlides_01-02\ex-06\ex-06_c++\ex-06_final\ex-06_VS\ex-06_visualStudio\x64\Debug\ex-06_visualStudio.exe

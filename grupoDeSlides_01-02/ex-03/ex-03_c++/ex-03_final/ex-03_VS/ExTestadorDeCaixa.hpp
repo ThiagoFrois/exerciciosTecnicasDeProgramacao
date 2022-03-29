@@ -12,8 +12,6 @@ public:
     //Destrutor
     ~ExTestadorDeCaixa();
 
-    void setCaixa(int l, int a, int p, Caixa& c);
-
     void perguntaEntradas();
 
     void executar();
