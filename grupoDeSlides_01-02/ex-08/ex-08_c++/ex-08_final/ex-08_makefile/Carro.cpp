@@ -1,16 +1,15 @@
 #include "Carro.hpp"
 
 //Construtoras
-
-Carro::Carro(int max, int cons)
-: combustivelAt{0}
+Carro::Carro(int max, int cons) : 
+combustivelAt(0)
 {
     if(!setCombMax(max) || !setConsumo(cons))
         exit(0);
 }
 
 Carro::Carro() :
-combustivelMax{1}, combustivelAt{0}, consumo{1}
+combustivelMax(1), combustivelAt(0), consumo(1) //Inicializa os atributos com os valores mínimos de acordo com as restrições.
 {
 
 }
@@ -21,11 +20,13 @@ Carro::~Carro()
 
 }
 
+//Set's
 bool Carro::setCombMax(int max)
 {
+    //Testa se a capacidade máxima do tanque de combustível é válida
     if(max < 1)
     {
-        std::cout << "Capacidade máxima do tanque inválida!" << std::endl;
+        cout << "Capacidade máxima do tanque inválida!" << endl;
         return false;
     }
     combustivelMax = max;
@@ -34,40 +35,34 @@ bool Carro::setCombMax(int max)
 
 bool Carro::setConsumo(int cons)
 {
+    //Testa se o valor de consumo é válido
     if(cons < 1)
     {
-        std::cout << "Consumo do veículo incorreto!" << std::endl;
+        cout << "Consumo do veículo incorreto!" << endl;
         return false;
     }
     consumo = cons;
     return true;
 }
 
-int Carro::getCombMax() const
-{
-    return combustivelMax;
-}
-
-int Carro::getCombAt() const
+//Get's
+int Carro::getCombustivel()
 {
     return combustivelAt;
 }
 
-int Carro::getConsumo() const
-{
-    return consumo;
-}
-
+//O carro anda uma distância dada
 void Carro::andar(int dist)
 {
     if(combustivelAt < dist/consumo){
-        std::cout << "Combustível insuficiente." << std::endl;
+        cout << "Combustível insuficiente." << endl;
         combustivelAt = 0;
     }
     else
         combustivelAt -= dist/consumo;
 }
 
+//O carro abastece o tanque com um quantidade dada
 void Carro::abastecer(int quantComb)
 {
     combustivelAt += quantComb;

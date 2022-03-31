@@ -1,4 +1,10 @@
+#pragma once
+
 #include <iostream>
+
+using std::cout;
+using std::cin;
+using std::endl;
 
 class Carro
 {
@@ -17,11 +23,11 @@ public:
     bool setConsumo(int comb);
 
     //Get's
-    int getCombMax() const;
-    int getCombAt() const;
-    int getConsumo() const;
+    int getCombustivel();
 
+    //O carro anda uma distância dada
     void andar(int dist);
 
+    //O carro abastece o tanque com um quantidade dada
     void abastecer(int quantComb);
 };

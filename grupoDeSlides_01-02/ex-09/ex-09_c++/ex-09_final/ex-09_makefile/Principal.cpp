@@ -2,7 +2,7 @@
 
 //Construtora
 Principal::Principal() :
-gol{45, 12, "Gol"}, uno{40, 14, "Uno"}
+gol(45, 12, "Gol")
 {
 
 }
@@ -13,8 +13,19 @@ Principal::~Principal()
 
 }
 
+void Principal::setViajem()
+{
+    int dist = 1;
+    float comb = 1;
+
+    cout << "Digite a distância da viajem, e o nível de combustível do veículo <distancia, combustivel> :";
+    cin >> dist >> comb;
+    cout << endl;
+
+    gol.viajem(dist, comb);
+}
+
 void Principal::executar()
 {
-    gol.viajem(700, 45);
-    uno.viajem(200, 70);
+    setViajem();
 }

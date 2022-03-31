@@ -1,4 +1,7 @@
+#pragma once
+
 #include "Colaborador.hpp"
+
 class Principal
 {
 private:
@@ -10,9 +13,13 @@ public:
     //Destrutora
     ~Principal();
 
+    //Obtém colaborador com maior rendimento
     Colaborador getMaiorRendimento();
+
+    //Obtém colaborador com maior custo
     Colaborador getMaiorCusto();
 
+    //Obtém dos valores de entrada dos colaboradores
     void getColaboradores();
 
     void executar();

@@ -1,4 +1,10 @@
+#pragma once
+
 #include <iostream>
+
+using std::cout;
+using std::cin;
+using std::endl;
 
 class PolReg
 {
@@ -18,11 +24,16 @@ public:
     bool setTamanho(int t);
 
     //Get's
-    int getPerimetro() const;
-    int getAngulo() const;
-    int getArea() const;
+    int getPerimetro();
+    int getAngulo();
+    int getArea();
 
+    //Calcula o perimetro do poligono regular
     void calcPerimetro();
+
+    //Calcula o valor dos angulos do poligono regular
     void calcAngulo();
+
+    //A área é zero, pois não pe possível calcular a área
     int calcArea();
 };

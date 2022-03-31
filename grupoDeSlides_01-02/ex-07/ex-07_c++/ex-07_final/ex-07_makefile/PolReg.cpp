@@ -12,7 +12,7 @@ PolReg::PolReg(int n, int t)
 }
 
 PolReg::PolReg() :
-n_lados{0}, tam_lado{0}, perimetro{0}, angulo{0}, area{0}
+n_lados(0), tam_lado(0), perimetro(0), angulo(0), area(0)
 {
 
 }
@@ -47,31 +47,34 @@ bool PolReg::setTamanho(int t)
 }
 
 //Get's
-int PolReg::getPerimetro() const
+int PolReg::getPerimetro()
 {
     return perimetro;
 }
 
-int PolReg::getAngulo() const
+int PolReg::getAngulo()
 {
     return angulo;
 }
 
-int PolReg::getArea() const
+int PolReg::getArea()
 {
     return area;
 }
 
+//Calcula o perimetro do poligono regular
 void PolReg::calcPerimetro()
 {
     perimetro = n_lados*tam_lado;
 }
 
+//Calcula o valor dos angulos do poligono regular
 void PolReg::calcAngulo()
 {
     angulo = 180*(n_lados - 2)/n_lados;
 }
 
+//A área é zero, pois não pe possível calcular a área
 int PolReg::calcArea()
 {
     area = 0;

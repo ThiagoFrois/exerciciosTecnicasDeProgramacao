@@ -1,39 +1,47 @@
+#pragma once
+
 #include <iostream>
 #include <cmath>
+#include <cstring>
+
+using std::cout;
+using std::cin;
+using std::endl;
+
 #define HORAS_TRABALHADAS_MES_PADRAO 80
 
 enum vinculo{EMPREGADO, SOCIO, ESTAGIARIO};
 
-
 class Colaborador
 {
 private:
-    std::string nome;
-    int tempoServico, tipoVinculo, horasTrabalhaDia;
+    char nome[30];
+    int tempoServico, tipoVinculo, horasTrabalha;
     float valorHoraTrabalho;
     float rendimento, custo;
 public:
     //Construtoras
-    Colaborador(std::string n, int vinculo);
+    Colaborador(const char* n, int vinculo);
     Colaborador();
 
     //Destrutora
     ~Colaborador();
 
     //Set's
-    void setNome(std::string n);
+    void setNome(const char* n);
     bool setTempoServico(int temp);
     bool setVinculo(int vinculo);
     bool setValorHoraTrabalho(float valor);
-    bool setHorasTrabalhoDia(int horas);
+    bool setHorasTrabalha(int horas);
 
     //Get's
-    std::string getNome() const;
-    float getRedimento() const;
-    float getCusto() const;
+    char* getNome();
+    float getRendimento();
+    float getCusto();
 
-    //Função calculaRendimento sobrecarregada
-    void calculaRendimento(int horasTrabalhadas);
+    //Calcula o rendimento com base no vínculo e o número de horas trabalhadas
+    void calculaRendimento();
 
+    //Calcula o custo de um colaborador
     void calculaCusto();
 };

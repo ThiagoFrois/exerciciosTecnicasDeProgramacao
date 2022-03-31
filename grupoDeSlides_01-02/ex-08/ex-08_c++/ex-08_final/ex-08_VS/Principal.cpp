@@ -2,7 +2,7 @@
 
 //Construtora
 Principal::Principal() :
-gol{45, 12}, uno{40, 14}
+gol(45, 12), uno(40, 14)
 {
 
 }
@@ -16,15 +16,15 @@ Principal::~Principal()
 void Principal::executar()
 {
     gol.abastecer(20);
-    std::cout << "O gol tem atualmente " << gol.getCombAt() << " litros de combustível." << std::endl;
+    cout << "O gol tem atualmente " << gol.getCombustivel() << " litros de combustível." << endl;
 
     uno.abastecer(25);
-    std::cout << "O uno tem atualmente " << uno.getCombAt() << " litros de combustível." << std::endl;
+    cout << "O uno tem atualmente " << uno.getCombustivel() << " litros de combustível." << endl;
 
     uno.andar(150);
-    std::cout << "Depois de viajar o uno tem " << uno.getCombAt() << " litros de combustível." << std::endl;
+    cout << "Depois de viajar o uno tem " << uno.getCombustivel() << " litros de combustível." << endl;
 
     gol.andar(80);
-    std::cout << "Depois de viajar o gol tem " << gol.getCombAt() << " litros de combustível." << std::endl;
+    cout << "Depois de viajar o gol tem " << gol.getCombustivel() << " litros de combustível." << endl;
 
 }

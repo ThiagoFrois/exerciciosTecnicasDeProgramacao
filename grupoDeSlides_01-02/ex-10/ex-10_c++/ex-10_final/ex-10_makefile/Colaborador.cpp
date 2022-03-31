@@ -1,18 +1,18 @@
 #include "Colaborador.hpp"
 
 //Construtoras
-Colaborador::Colaborador(std::string n, int vinc) :
-tempoServico{0}, horasTrabalhaDia{0}, valorHoraTrabalho{0}
+Colaborador::Colaborador(const char* n, int vinc) :
+tempoServico(0), horasTrabalha(HORAS_TRABALHADAS_MES_PADRAO), valorHoraTrabalho(0)
 {
-    nome = n;
+    setNome(n);
     if(!setVinculo(vinc))
         exit(0);
 }
 
 Colaborador::Colaborador() :
-nome{""}, tempoServico{0}, tipoVinculo{0}, horasTrabalhaDia{0}, valorHoraTrabalho{0}
+tempoServico(0), tipoVinculo(0), horasTrabalha(HORAS_TRABALHADAS_MES_PADRAO), valorHoraTrabalho(0)
 {
-
+    setNome("");
 }
 
 //Destrutora
@@ -22,15 +22,16 @@ Colaborador::~Colaborador()
 }
 
 //Set's
-void Colaborador::setNome(std::string n)
+void Colaborador::setNome(const char* n)
 {
-    nome = n;
+    strcpy(nome, n);
 }
 
 bool Colaborador::setTempoServico(int temp)
 {
+    //Se o tempo de serviço é um valor válido
     if(temp < 0){
-        std::cout << "Tempo de serviço incorreto!" << std::endl;
+        cout << "Tempo de serviço incorreto!" << endl;
         return false;
     }
     tempoServico = temp;
@@ -39,9 +40,10 @@ bool Colaborador::setTempoServico(int temp)
 
 bool Colaborador::setVinculo(int vinc)
 {
+    //Testa se o tipo de vínculo é valido
     if(vinc < 0 || vinc > 2)
     {
-        std::cout << "Vínculo incorreto!" << std::endl;
+        cout << "Vínculo incorreto!" << endl;
     }
     tipoVinculo = vinc;
     return true;
@@ -49,69 +51,79 @@ bool Colaborador::setVinculo(int vinc)
 
 bool Colaborador::setValorHoraTrabalho(float valor)
 {
+    //Testa se o valor da hora de trabalho válida
     if(valor < 0)
     {
-        std::cout << "Valor da hora de trabalho incorreto!" << std::endl;
+        cout << "Valor da hora de trabalho incorreto!" << endl;
         return false;
     }
+
     valorHoraTrabalho = valor;
-    if(tempoServico >= 1)
-        valorHoraTrabalho *= std::pow(1.1, tempoServico);
+
     return true;
 }
 
-bool Colaborador::setHorasTrabalhoDia(int horas)
+bool Colaborador::setHorasTrabalha(int horas)
 {
+    //Testa se a quantidade de horas trabalhadas em um dia é um valor válido
     if(horas < 0)
     {
-        std::cout << "Número de horas trabalhadas por dia incorreto!" << std::endl;
+        cout << "Número de horas trabalhadas por dia incorreto!" << endl;
     }
-    horasTrabalhaDia = horas;
+    horasTrabalha = horas;
     return true;
 }
 
-std::string Colaborador::getNome() const
+char* Colaborador::getNome()
 {
     return nome;
 }
 
-float Colaborador::getRedimento() const
+float Colaborador::getRendimento()
 {
     return rendimento;
 }
 
-float Colaborador::getCusto() const
+float Colaborador::getCusto()
 {
     return custo;
 }
 
-void Colaborador::calculaRendimento(int horasTrabalhadas)
+//Calcula o rendimento com base no vínculo e o número de horas trabalhadas
+void Colaborador::calculaRendimento()
 {
-    if(tipoVinculo == SOCIO)
+    int resto;
+    int valorHoraTrabalhoTemp;
+
+    switch (tipoVinculo)
     {
-        rendimento = valorHoraTrabalho*horasTrabalhadas;
+        case EMPREGADO:
+            //Calcula o valor da hora de trabalho com base no tempo de serviço
+            valorHoraTrabalhoTemp = valorHoraTrabalho * pow(1.1, tempoServico);
+
+            rendimento = valorHoraTrabalhoTemp * horasTrabalha;
+
+            //Verica se o empregado fez hora extra e calcula o rendimento das horas trabalhadas
+            if(horasTrabalha > 144) 
+            {
+                resto = horasTrabalha - 144; //Periodo da hora extra
+                rendimento += resto * valorHoraTrabalhoTemp * 0.5;
+            }
+            break;
+        default:
+            rendimento = valorHoraTrabalho * horasTrabalha;
     }
-    else if(tipoVinculo == EMPREGADO)
-    {
-        if(horasTrabalhadas > 144){
-            int resto = horasTrabalhadas - 144;
-            rendimento = 144*valorHoraTrabalho + resto*valorHoraTrabalho*1.5;
-        }
-        else
-            rendimento = valorHoraTrabalho*horasTrabalhadas;
-    }
-    else
-        rendimento = valorHoraTrabalho*HORAS_TRABALHADAS_MES_PADRAO;
-    std::cout << "Redimento do " << nome << " é " << rendimento << std::endl;
 }
 
+//Calcula o custo de um colaborador
 void Colaborador::calculaCusto()
 {
-    if(tipoVinculo == ESTAGIARIO)
-        custo = rendimento;
-    else if(tipoVinculo == SOCIO)
-        custo = rendimento;
-    else
-        custo = rendimento*1.8;
-std::cout << "Custo do " << nome << " é " << custo << std::endl;
+    switch (tipoVinculo)
+    {
+        case EMPREGADO:
+            custo = rendimento * 1.8;
+            break;
+        default:
+            custo = rendimento;
+    }
 }

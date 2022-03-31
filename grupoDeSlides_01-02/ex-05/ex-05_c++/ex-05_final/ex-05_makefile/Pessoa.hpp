@@ -24,13 +24,13 @@ public:
     void setNome(const char* n);
     bool setDataNascimento(int i, int d, int a);
 
-    //Fun��es Get's
+    //Funções Get's
     int getIdade();
     const char* getNome();
 
     //Calcula a idade
     int calculaIdade(int diaAt, int mesAt, int anoAt);
 
-    //Imprime na tela de sa�da a idade e o nome
+    //Imprime na tela de saída a idade e o nome
     void printIdadeNome();
 };

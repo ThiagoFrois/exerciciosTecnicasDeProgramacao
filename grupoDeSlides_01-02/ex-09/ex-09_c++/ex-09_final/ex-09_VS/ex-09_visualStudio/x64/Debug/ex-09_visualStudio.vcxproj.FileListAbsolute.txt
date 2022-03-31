@@ -1,1 +1,2 @@
 C:\Users\thiag\Music\exercicios\ex-09\ex-09_VS\ex-09_visualStudio\x64\Debug\ex-09_visualStudio.exe
+C:\Users\thiag\Documents\repositoriosGIT\exerciciosTecnicasDeProgramacao\grupoDeSlides_01-02\ex-09\ex-09_c++\ex-09_final\ex-09_VS\ex-09_visualStudio\x64\Debug\ex-09_visualStudio.exe
