@@ -1,9 +1,0 @@
-﻿  Colaborador.cpp
-C:\Users\thiag\Documents\repositoriosGIT\exerciciosTecnicasDeProgramacao\grupoDeSlides_01-02\ex-10\ex-10_c++\ex-10_final\ex-10_VS\Colaborador.cpp(102,55): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-C:\Users\thiag\Documents\repositoriosGIT\exerciciosTecnicasDeProgramacao\grupoDeSlides_01-02\ex-10\ex-10_c++\ex-10_final\ex-10_VS\Colaborador.cpp(104,48): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
-C:\Users\thiag\Documents\repositoriosGIT\exerciciosTecnicasDeProgramacao\grupoDeSlides_01-02\ex-10\ex-10_c++\ex-10_final\ex-10_VS\Colaborador.cpp(110,61): warning C4244: '+=': conversão de 'double' para 'float', possível perda de dados
-C:\Users\thiag\Documents\repositoriosGIT\exerciciosTecnicasDeProgramacao\grupoDeSlides_01-02\ex-10\ex-10_c++\ex-10_final\ex-10_VS\Colaborador.cpp(124,32): warning C4244: '=': conversão de 'double' para 'float', possível perda de dados
-  Principal.cpp
-  main.cpp
-  Gerando Código...
-  ex-10_visualStudio.vcxproj -> C:\Users\thiag\Documents\repositoriosGIT\exerciciosTecnicasDeProgramacao\grupoDeSlides_01-02\ex-10\ex-10_c++\ex-10_final\ex-10_VS\ex-10_visualStudio\x64\Debug\ex-10_visualStudio.exe
