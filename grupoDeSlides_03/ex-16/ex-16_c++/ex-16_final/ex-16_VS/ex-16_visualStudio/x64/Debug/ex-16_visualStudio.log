@@ -1,7 +1,0 @@
-﻿  Cliente.cpp
-C:\Users\thiag\Documents\repositoriosGIT\exerciciosTecnicasDeProgramacao\ex\ex-16\ex-16_c++\ex-16_final\ex-16_VS\Cliente.cpp(108,26): warning C4244: 'argumento': conversão de 'double' para 'float', possível perda de dados
-  Conta.cpp
-  main.cpp
-  Principal.cpp
-  Gerando Código...
-  ex-16_visualStudio.vcxproj -> C:\Users\thiag\Documents\repositoriosGIT\exerciciosTecnicasDeProgramacao\ex\ex-16\ex-16_c++\ex-16_final\ex-16_VS\ex-16_visualStudio\x64\Debug\ex-16_visualStudio.exe
