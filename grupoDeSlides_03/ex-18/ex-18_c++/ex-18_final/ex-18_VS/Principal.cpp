@@ -1,8 +1,9 @@
 #include "Principal.hpp"
 
 Principal::Principal() :
-Einstein(14, 3, 1879, "Albert Einstein", &Princeton), Newton(4, 1, 1643, "Isaac Newton", &Cambrigde),
-Princeton("Princeton"), Cambrigde("Cambridge")
+Einstein(14, 3, 1879, "Albert Einstein", &Princeton, &Princeton.getDepartamento()), 
+Newton(4, 1, 1643, "Isaac Newton", &Cambrigde, &Princeton.getDepartamento()),
+Princeton("Princeton", Departamento("Fisica")), Cambrigde("Cambridge", Departamento("Fisica"))
 {
 
 }

@@ -19,12 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Departamento.cpp" />
     <ClCompile Include="..\main.cpp" />
     <ClCompile Include="..\Pessoa.cpp" />
     <ClCompile Include="..\Principal.cpp" />
     <ClCompile Include="..\Universidade.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Departamento.hpp" />
     <ClInclude Include="..\Pessoa.hpp" />
     <ClInclude Include="..\Principal.hpp" />
     <ClInclude Include="..\Universidade.hpp" />

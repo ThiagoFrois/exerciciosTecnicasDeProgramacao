@@ -8,9 +8,10 @@ private:
     int idade, dia, mes, ano;
     char nome[30];
     Universidade* univFiliada;
+    Departamento* deptFiliada;
 public:
     //Construtoras
-    Pessoa(int diaNas, int mesNas, int anoNas, const char* n, Universidade* u = nullptr);
+    Pessoa(int diaNas, int mesNas, int anoNas, const char* n, Universidade* u = nullptr, Departamento* d = nullptr);
     Pessoa();
 
     //Destrutora
@@ -23,10 +24,12 @@ public:
     void setNome(const char* n);
     bool setDataNascimento(int i, int d, int a);
     void setUnivFiliada(Universidade* u);
+    void setDeptFiliada(Departamento* d);
 
     int getIdade();
     const char* getNome();
     Universidade* getUnivFiliada();
+    Departamento* getDeptFiliada();
 
     int calculaIdade(int diaAt, int mesAt, int anoAt);
 

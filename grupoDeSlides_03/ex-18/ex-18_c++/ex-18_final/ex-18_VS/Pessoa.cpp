@@ -1,7 +1,7 @@
 #include "Pessoa.hpp"
 
-Pessoa::Pessoa(int diaNas, int mesNas, int anoNas, const char* n, Universidade* u) :
-univFiliada(u)
+Pessoa::Pessoa(int diaNas, int mesNas, int anoNas, const char* n, Universidade* u, Departamento* d) :
+univFiliada(u), deptFiliada(d)
 {
     if (!setDataNascimento(diaNas, mesNas, anoNas))
         exit(0);
@@ -14,7 +14,7 @@ univFiliada(u)
 }
 
 Pessoa::Pessoa() :
-idade(0), dia(0), mes(0), ano(0), nome(""), univFiliada(nullptr)
+idade(0), dia(0), mes(0), ano(0), nome(""), univFiliada(nullptr), deptFiliada(nullptr)
 {
 
 }
@@ -78,6 +78,11 @@ void Pessoa::setUnivFiliada(Universidade* u)
     univFiliada = u;
 }
 
+void Pessoa::setDeptFiliada(Departamento* d)
+{
+    deptFiliada = d;
+}
+
 
 int Pessoa::getIdade()
 {
@@ -92,6 +97,11 @@ const char* Pessoa::getNome()
 Universidade* Pessoa::getUnivFiliada()
 {
     return univFiliada;
+}
+
+Departamento* Pessoa::getDeptFiliada()
+{
+    return deptFiliada;
 }
 
 int Pessoa::calculaIdade(int diaAt, int mesAt, int anoAt)
@@ -110,5 +120,5 @@ int Pessoa::calculaIdade(int diaAt, int mesAt, int anoAt)
 
 void Pessoa::imprimeDados()
 {
-    cout << nome << " tem " << idade << " anos e trabalha na universidade de " << univFiliada->getNome() << endl;
+    cout << nome << " tem " << idade << " anos e trabalha na universidade de " << univFiliada->getNome() << " no departamento de " << deptFiliada->getNome() << endl;
 }
