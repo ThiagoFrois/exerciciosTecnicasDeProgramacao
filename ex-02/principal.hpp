@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Horario.hpp"
+#include "horario.hpp"
 
 class Principal {
   public:

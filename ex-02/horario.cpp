@@ -1,13 +1,15 @@
-#include "Horario.hpp"
+#include "horario.hpp"
 
-Horario::Horario(int horas, int minutos) {
+Horario::Horario(int horas, int minutos) : mValidade{true} {
   if (horas < 0 || horas > MAX_HORA || minutos < 0 || minutos > MAX_MIN) {
     std::cerr << "Erro de Execução: Horário com valores incorretos." << std::endl;
     mValidade = false;
   }
+  mHoras = horas;
+  mMinutos = minutos;
 }
 
-Horario::Horario() : mHoras{0}, mMinutos{0}, mValidade{true}{
+Horario::Horario() : mHoras{0}, mMinutos{0}, mValidade{true} {
 
 }
 
