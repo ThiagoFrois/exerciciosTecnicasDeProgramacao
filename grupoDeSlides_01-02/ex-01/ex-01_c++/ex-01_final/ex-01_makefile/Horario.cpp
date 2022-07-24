@@ -1,58 +1,39 @@
 #include "Horario.hpp"
 
-//Construtora
-Horario::Horario() :
-hora(0), min(0)
-{
+Horario::Horario() : mHoras{0}, mMinutos{0}  {
 
 }
 
-//Destrutora
-Horario::~Horario()
-{
+Horario::~Horario() {
 
 }
 
-//Funções Set's
-bool Horario::setHora(int h)
-{
-    //Testa se h é um valor de hora válido
-    if(h >= 0 && h <= MAX_HORA)
-    {
-        hora = h;
-        return true;
-    }
-    return false;
+bool Horario::SetHora(int horas) {
+  if (horas >= 0 && horas <= MAX_HORA) {
+    mHoras = horas;
+    return true;
+  }
+  return false;
 }
 
-bool Horario::setMin(int m)
-{
-    //Testa se m é um valor de minuto válido
-    if(m >= 0 && m <= MAX_MIN)
-    {
-        min = m;
-        return true;
-    }
-    return false;
+bool Horario::SetMin(int minutos) {
+  if (minutos >= 0 && minutos <= MAX_MIN) {
+    mMinutos = minutos;
+    return true;
+  }
+  return false;
 }
 
-//Funções Get's
-int Horario::getHora()
-{
-    return hora;
+int Horario::GetHora() {
+  return mHoras;
 }
 
-int Horario::getMin()
-{
-    return min;
+int Horario::GetMin() {
+  return mMinutos;
 }
 
-//Calcula o intervalo de tempo com um horário dado
-int Horario::calculaIntervalo(Horario horario)
-{
-    //Calcula a diferença entre as horas (transformada em minutos) + diferença entre os minutos
-    int intervalo = (horario.getHora() - hora)*HORA_PARA_MIN + horario.getMin() - min;
+int Horario::CalculaIntervalo(Horario horarioSaida) {
+  int intervalo = (horarioSaida.GetHora() - mHoras) * MIN_POR_HORA + horarioSaida.GetMin() - mMinutos;
 
-    //Se o intervalo é negativo, passou mais de um dia.
-    return intervalo > 0 ? intervalo : intervalo + MIN_POR_DIA;
+  return intervalo >= 0 ? intervalo : -intervalo + MIN_POR_DIA;
 }

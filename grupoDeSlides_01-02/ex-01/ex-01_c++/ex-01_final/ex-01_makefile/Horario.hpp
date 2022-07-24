@@ -1,35 +1,25 @@
 #pragma once
 
 #include <iostream>
-using std::cout;
-using std::cin;
-using std::endl;
 
-#define HORA_PARA_MIN 60
+#define MIN_POR_HORA 60
 #define MIN_POR_DIA 1440
 #define MAX_MIN 59
 #define MAX_HORA 23
 
-class Horario
-{
-private:
-    int hora, min;
-
-public:
-    //Construtora
+class Horario {
+  public:
     Horario();
-
-    //Destrutora
     ~Horario();
 
-    //Funções Set's
-    bool setHora(int h);
-    bool setMin(int m);
+    bool SetHora(int horas);
+    bool SetMin(int minutos);
 
-    //Funções Get's
-    int getHora();
-    int getMin();
+    int GetHora();
+    int GetMin();
 
-    //Calcula o intervalo de tempo com um horário dado
-    int calculaIntervalo(Horario horario);
+    int CalculaIntervalo(Horario horarioSaida);
+
+  private:
+    int mHoras, mMinutos;
 };
