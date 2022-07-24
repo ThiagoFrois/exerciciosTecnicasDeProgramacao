@@ -2,23 +2,20 @@
 
 #include "Horario.hpp"
 
-class Principal
-{
-private:
-    Horario entrada;
-    Horario saida;
-public:
-    //Construtoras
+class Principal {
+  public:
     Principal();
-
-    //Destrutora
     ~Principal();
 
-    //Obtém dos valores do horário de entrada e saída pelo terminal
-    void setHorarios();
+    void PerguntaHorarios();
 
-    //Calcula o custo de um intervalo de horarios
-    float calculaCusto();
+    int CalculaIntervalo();
 
-    void executar();
+    float CalculaCusto();
+
+    void Executar();
+
+  private:
+    Horario mHorarioEntrada;
+    Horario mHorarioSaida;
 };

@@ -1,55 +1,48 @@
 #include "Principal.hpp"
 
-//Construtora
-Principal::Principal()
-{
+Principal::Principal() {
 
 }
 
-//Destrutora
-Principal::~Principal()
-{
+Principal::~Principal() {
 
 }
 
-//Obtém dos valores do horário de entrada e saída pelo terminal
-void Principal::setHorarios()
-{
-    int h, m;
+void Principal::PerguntaHorarios() {
+  int horas, minutos;
 
-    //Pede o horário de entrada
-    cout << "Escreva o horario de entrada (Formato: hh mm) :";
-    cin >> h >> m;
-    cout << endl;
+  std::cout << "Escreva o horário de entrada {hh} {mm}: ";
+  std::cin >> horas >> minutos;
 
-    entrada = Horario(h, m);
+  mHorarioEntrada = Horario{horas, minutos};
+  if (!mHorarioEntrada.GetValidade())
+    return;
 
-    //Pede o horário de saída
-    cout << "Escreva o horario de saida (Formato: hh mm) : ";
-    cin >> h >> m;
-    cout << endl;
+  std::cout << "Escreve o horário de saída {hh} {mm}: ";
+  std::cin >> horas >> minutos;
 
-    saida = Horario(h, m);
+  mHorarioSaida = Horario{horas, minutos};
+  if (!mHorarioSaida.GetValidade())
+    return;
+  
 }
 
-//Calcula o custo de um intervalo de horários
-float Principal::calculaCusto()
-{
-    float custo;
-    int intervalo = entrada.calculaIntervalo(saida);
-    if(intervalo < 3*HORA_PARA_MIN)
-        custo = 4.5; // Custo padrão inferior
-    else if(intervalo >= 3* HORA_PARA_MIN && intervalo <= 12* HORA_PARA_MIN){
-        custo = 4.5 + ((intervalo - HORA_PARA_MIN *3)/15)*0.75; //Custo base + número de bloco de 15 minutos de tempo excendente * custo
-    }
-    else
-        custo = 33.0; // Custo padrão superior
+float Principal::CalculaCusto() {
+  float custo;
+  int intervalo = mHorarioEntrada.CalculaIntervalo(mHorarioSaida);
 
-    return custo;
+  if (intervalo < 3 * MIN_POR_HORA)
+    custo = 4.5; 
+  else if (intervalo >= 3 * MIN_POR_HORA && intervalo <= 12 * MIN_POR_HORA)
+    custo = 4.5 + ((intervalo - 3 * MIN_POR_HORA) / 15) * 0.75;
+  else
+    custo = 33.0; 
+
+  return custo;
 }
 
-void Principal::executar()
-{
-    setHorarios();
-    cout << "O custo foi de R$" << calculaCusto() << endl;
+void Principal::Executar() {
+  PerguntaHorarios();
+
+  std::cout << "O custo foi de R$" << CalculaCusto() << std::endl;
 }
