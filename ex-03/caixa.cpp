@@ -1,4 +1,4 @@
-#include "Caixa.hpp"
+#include "caixa.hpp"
 
 Caixa::Caixa() : mLargura{0}, mAltura{0}, mProfundidade{0} {
 

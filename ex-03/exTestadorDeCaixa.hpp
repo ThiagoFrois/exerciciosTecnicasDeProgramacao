@@ -1,4 +1,6 @@
-#include "Caixa.hpp"
+#pragma once
+
+#include "caixa.hpp"
 
 class ExTestadorDeCaixa
 {

@@ -1,7 +1,7 @@
 // Monitor: Thiago Henrique Frois Menon Cunha
 // Data: Semestre 2022/1
 
-#include "ExTestadorDeCaixa.hpp"
+#include "exTestadorDeCaixa.hpp"
 
 int main()
 {

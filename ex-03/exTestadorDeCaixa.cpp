@@ -1,4 +1,4 @@
-#include "ExTestadorDeCaixa.hpp"
+#include "exTestadorDeCaixa.hpp"
 
 ExTestadorDeCaixa::ExTestadorDeCaixa() {
   std::cout << "Meu nome é Thiago." << std::endl;

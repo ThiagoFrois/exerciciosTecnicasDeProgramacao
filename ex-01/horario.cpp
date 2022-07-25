@@ -1,4 +1,4 @@
-#include "Horario.hpp"
+#include "horario.hpp"
 
 Horario::Horario() : mHoras{0}, mMinutos{0}  {
 
