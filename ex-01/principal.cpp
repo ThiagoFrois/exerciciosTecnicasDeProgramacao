@@ -1,20 +1,24 @@
 #include "principal.hpp"
 
-Principal::Principal() {
+Principal::Principal() 
+{
 
 }
 
-Principal::~Principal() {
+Principal::~Principal() 
+{
 
 }
 
-void Principal::PerguntaHorarios() {
+void Principal::PerguntaHorarios() 
+{
   int horas, minutos;
 
   std::cout << "Escreva o horário de entrada {hh} {mm}: ";
   std::cin >> horas >> minutos;
  
-  if (!mHorarioEntrada.SetHora(horas) || !mHorarioEntrada.SetMin(minutos)) {
+  if (!mHorarioEntrada.SetHora(horas) || !mHorarioEntrada.SetMin(minutos))
+  {
     std::cerr << "Erro de Execução: Horário de entrada com valores incorretos." << std::endl;
     return;
   }
@@ -22,13 +26,15 @@ void Principal::PerguntaHorarios() {
   std::cout << "Escreve o horário de saída {hh} {mm}: ";
   std::cin >> horas >> minutos;
 
-  if (!mHorarioSaida.SetHora(horas) || !mHorarioSaida.SetMin(minutos)) {
+  if (!mHorarioSaida.SetHora(horas) || !mHorarioSaida.SetMin(minutos)) 
+  {
     std::cerr << "Erro de Execução: Horário de saída com valores incorretos." << std::endl;
     return;
   }
 }
 
-float Principal::CalculaCusto() {
+float Principal::CalculaCusto() 
+{
   float custo;
   int intervalo = mHorarioEntrada.CalculaIntervalo(mHorarioSaida);
 
@@ -42,7 +48,9 @@ float Principal::CalculaCusto() {
   return custo;
 }
 
-void Principal::Executar() {
+void Principal::Executar() 
+{
   PerguntaHorarios();
+
   std::cout << "O custo foi de R$" << CalculaCusto() << std::endl;
 }
