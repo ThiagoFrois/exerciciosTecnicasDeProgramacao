@@ -3,7 +3,8 @@
 
 #include "principal.hpp"
 
-int main() {
+int main() 
+{
   Principal principal;
 
   principal.Executar();

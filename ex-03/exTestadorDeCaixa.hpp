@@ -4,16 +4,16 @@
 
 class ExTestadorDeCaixa
 {
-private:
-    Caixa caixa1, caixa2;
-
 public:
-    ExTestadorDeCaixa();
-    ~ExTestadorDeCaixa();
+  ExTestadorDeCaixa();
+  ~ExTestadorDeCaixa();
 
-    void PerguntaEntradas();
+  void PerguntaEntradas();
 
-    void MostrarAreaEVolume(Caixa caixa);
+  void MostrarAreaEVolume(Caixa caixa);
 
-    void Executar();
+  void Executar();
+
+private:
+  Caixa caixa1, caixa2;
 };

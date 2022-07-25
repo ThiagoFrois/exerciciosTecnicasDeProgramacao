@@ -1,14 +1,17 @@
 #include "principal.hpp"
 
-Principal::Principal() {
+Principal::Principal() 
+{
 
 }
 
-Principal::~Principal() {
+Principal::~Principal() 
+{
 
 }
 
-void Principal::PerguntaHorarios() {
+void Principal::PerguntaHorarios() 
+{
   int horas, minutos;
 
   std::cout << "Escreva o horário de entrada {hh} {mm}: ";
@@ -27,7 +30,8 @@ void Principal::PerguntaHorarios() {
   
 }
 
-float Principal::CalculaCusto() {
+float Principal::CalculaCusto() 
+{
   float custo;
   int intervalo = mHorarioEntrada.CalculaIntervalo(mHorarioSaida);
 
@@ -41,7 +45,8 @@ float Principal::CalculaCusto() {
   return custo;
 }
 
-void Principal::Executar() {
+void Principal::Executar() 
+{
   PerguntaHorarios();
 
   std::cout << "O custo foi de R$" << CalculaCusto() << std::endl;

@@ -2,20 +2,21 @@
 
 #include "horario.hpp"
 
-class Principal {
-  public:
-    Principal();
-    ~Principal();
+class Principal 
+{
+public:
+  Principal();
+  ~Principal();
 
-    void PerguntaHorarios();
+  void PerguntaHorarios();
 
-    int CalculaIntervalo();
+  int CalculaIntervalo();
 
-    float CalculaCusto();
+  float CalculaCusto();
 
-    void Executar();
+  void Executar();
 
-  private:
-    Horario mHorarioEntrada;
-    Horario mHorarioSaida;
+private:
+  Horario mHorarioEntrada;
+  Horario mHorarioSaida;
 };

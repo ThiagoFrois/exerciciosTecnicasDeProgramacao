@@ -5,9 +5,9 @@
 
 int main()
 {
-    ExTestadorDeCaixa testadorCaixa;
+  ExTestadorDeCaixa testadorCaixa;
 
-    testadorCaixa.Executar();
+  testadorCaixa.Executar();
 
-    return 0;
+  return 0;
 }

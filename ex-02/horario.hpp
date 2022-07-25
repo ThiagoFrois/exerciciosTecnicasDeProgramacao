@@ -7,20 +7,21 @@
 #define MAX_MIN 59
 #define MAX_HORA 23
 
-class Horario {
-  public:
-    Horario(int horas, int minutos);
-    Horario();
-    ~Horario();
+class Horario 
+{
+public:
+  Horario(int horas, int minutos);
+  Horario();
+  ~Horario();
 
-    int GetHora();
-    int GetMin();
+  int GetHora();
+  int GetMin();
 
-    int CalculaIntervalo(Horario horarioSaida);
+  int CalculaIntervalo(Horario horarioSaida);
 
-    bool GetValidade();
+  bool GetValidade();
 
-  private:
-    int mHoras, mMinutos;
-    bool mValidade;
+private:
+  int mHoras, mMinutos;
+  bool mValidade;
 };

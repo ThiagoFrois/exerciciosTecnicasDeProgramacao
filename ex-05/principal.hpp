@@ -4,14 +4,14 @@
 
 class Principal
 {
-private:
-    Pessoa Einstein, Newton;
-
 public:
-    Principal();
-    ~Principal();
+  Principal();
+  ~Principal();
 
-    void ImprimeDadosPessoa(Pessoa pessoa);
+  void ImprimeDadosPessoa(Pessoa pessoa);
 
-    void Executar();
+  void Executar();
+
+private:
+  Pessoa Einstein, Newton;
 };

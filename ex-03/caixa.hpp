@@ -3,18 +3,18 @@
 #include <iostream>
 
 class Caixa {
-  public:
-    Caixa();
-    ~Caixa();
+public:
+  Caixa();
+  ~Caixa();
 
-    bool SetLargura(int largura);
-    bool SetAltura(int altura);
-    bool SetProfundidade(int profundidade);
+  bool SetLargura(int largura);
+  bool SetAltura(int altura);
+  bool SetProfundidade(int profundidade);
 
-    int CalcAreaExt();
+  int CalcAreaExt();
 
-    int CalcVolume();
+  int CalcVolume();
 
-  private:
-    int mLargura, mAltura, mProfundidade;
+private:
+  int mLargura, mAltura, mProfundidade;
 };

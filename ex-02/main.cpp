@@ -3,12 +3,12 @@
 
 #include "principal.hpp"
 
-int main()
+int main() 
 {
-    Principal principal;
+  Principal principal;
 
-    principal.Executar();
+  principal.Executar();
 
-    return 0;
+  return 0;
 }
 
