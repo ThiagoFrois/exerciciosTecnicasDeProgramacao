@@ -1,16 +1,20 @@
-//Monitor: Thiago Henrique Frois Menon Cunha
-//Data: Semestre 2022/1
+// Monitor: Thiago Henrique Frois Menon Cunha
+// Data: Semestre 2022/1
 
-#include "Principal.hpp"
+#include "principal.hpp"
 
 int main()
 {
-    //Permite cout imprimir acentos
-    setlocale(LC_ALL, "pt_BR.UTF-8");
-
+  try
+  {
     Principal principal;
 
-    principal.executar();
-
-    return 0;
+    principal.Executar();
+  }
+  catch(const char* erro)
+  {
+    std::cerr << "Erro de execução: " << erro << std::endl;
+  }
+  
+  return 0;
 }
