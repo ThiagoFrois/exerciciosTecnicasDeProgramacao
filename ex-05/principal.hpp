@@ -1,4 +1,6 @@
-#include "Pessoa.hpp"
+#pragma once
+
+#include "pessoa.hpp"
 
 class Principal
 {
@@ -9,5 +11,7 @@ public:
     Principal();
     ~Principal();
 
-    void executar();
+    void ImprimeDadosPessoa(Pessoa pessoa);
+
+    void Executar();
 };
