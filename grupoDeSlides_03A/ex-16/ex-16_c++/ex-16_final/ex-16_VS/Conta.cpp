@@ -18,7 +18,8 @@ int Conta::getNumUsuarios()
 
 void Conta::sacar(float _valor)
 {
-    saldo -= _valor;
+    if(saldo - _valor >= 0)
+        saldo -= _valor;
 }
 
 void Conta::depositar(float _valor)
