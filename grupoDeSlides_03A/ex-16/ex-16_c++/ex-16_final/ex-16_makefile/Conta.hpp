@@ -1,23 +1,32 @@
 #pragma once
 
+#include <iostream>
+#include <cstring>
+
+using std::cout;
+using std::endl;
+
 class Conta
 {
 private:
-    int numero;
-    float saldo;
+    int numero, numUsuarios;
+    double saldo;
 public:
-    //Construtoras
-    Conta(int num, int saldo);
-    Conta();
+
+    //Construtora
+    Conta(int _numero = -1, double _saldo = 0);
 
     //Destrutora
     ~Conta();
 
-    void sacar(float s);
+    int getNumUsuarios();
 
-    void depositar(float d);
+    void sacar(float _valor);
+
+    void depositar(float _valor);
 
     int getNumero();
 
-    float getSaldo();
+    double getSaldo();
 };
+

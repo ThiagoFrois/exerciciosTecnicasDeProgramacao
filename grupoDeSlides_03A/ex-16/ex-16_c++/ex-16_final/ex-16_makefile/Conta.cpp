@@ -1,25 +1,30 @@
 #include "Conta.hpp"
 
-Conta::Conta(int num, int s) :
-numero(num), saldo(s)
+Conta::Conta(int _numero, double _saldo) :
+numero(_numero), numUsuarios(0), saldo(_saldo)
 {
 
 }
 
-Conta::Conta() :
-numero(-1), saldo(0)
+Conta::~Conta()
 {
 
 }
 
-void Conta::sacar(float s)
+int Conta::getNumUsuarios()
 {
-    saldo -= s;
+    return numUsuarios;
 }
 
-void Conta::depositar(float d)
+void Conta::sacar(float _valor)
 {
-    saldo += d;
+    if(saldo - _valor >= 0)
+        saldo -= _valor;
+}
+
+void Conta::depositar(float _valor)
+{
+    saldo += _valor;
 }
 
 int Conta::getNumero()
@@ -27,8 +32,7 @@ int Conta::getNumero()
     return numero;
 }
 
-float Conta::getSaldo()
+double Conta::getSaldo()
 {
     return saldo;
 }
-

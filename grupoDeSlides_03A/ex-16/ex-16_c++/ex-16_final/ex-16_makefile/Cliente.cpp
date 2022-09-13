@@ -1,17 +1,18 @@
 #include "Cliente.hpp"
 
-Cliente::Cliente(const char* n, const char* c)
+Cliente::Cliente(const char* _nome, const char* _cpf)
 {
-    incializaContasVazias();
-    strcpy(nome, n);
-    strcpy(cpf, c);
-}
+    // Inicializa as conta com nullptr
+    for (int i = 0; i < 13; i++)
+    {
+        contas[i] = nullptr;
+    }
 
-Cliente::Cliente()
-{
-    incializaContasVazias();
-    strcpy(nome, "");
-    strcpy(cpf, "");
+    // Iniciliza os outros atributos
+    strcpy(nome, _nome);
+    strcpy(cpf, _cpf);
+    numContasT = 0;
+    numContasV = 0;
 }
 
 Cliente::~Cliente()
@@ -19,71 +20,133 @@ Cliente::~Cliente()
 
 }
 
-void Cliente::incializaContasVazias()
+// Víncula o cliente a uma conta já criada
+void Cliente::vincularConta(Conta* _conta)
 {
-    for(int i = 0; i < 3; i++)
+    if (!_conta)
+        return;
+
+    if (_conta->getNumUsuarios() == 2) 
     {
-        contas[i] = nullptr;
+        cout << "O número máximo de clientes nessa conta já foi atingido." << endl;
+        return;
     }
+    else if (numContasV == 10)
+    {
+        cout << "Número máximo de contas não titulares já foi atingido." << endl;
+        return;
+    }
+    contas[3 + numContasV] = _conta;
 }
 
-void Cliente::criarConta(Conta* c)
+// Se um usuário cria uma conta ele é o titular.
+void Cliente::criarConta(Conta* _conta)
 {
-    int i = 0;
-    while(contas[i] != nullptr && i < 3)
-        i++;
-
-    if(i == 3)
-        cout << "NÃ£o Ã© possÃ­vel criar mais contas!" << endl;
-    else
+    if (numContasT == 3) 
     {
-        contas[i] = c;
-    }
-}
-
-void Cliente::removerConta(int num)
-{
-    int i = 0;
-    while(contas[i]->getNumero() != num)
-    {
-        i++;
+        cout << "Limite de contas titulares atingido!" << endl;
+        return;
     }
 
-    contas[i] = nullptr;
+    contas[numContasT] = _conta;
+    numContasT++;
 }
 
 const char* Cliente::gerarRelatorio()
 {
-    int i = 0;
-    char*  relatorio;
-    char* aux;
-    relatorio = strcat(nome, " ");
-    relatorio = strcat(relatorio, cpf);
-    relatorio = strcat(relatorio, " ");
-    while(contas[i] != nullptr)
+    int i = 0, j = 1;
+    //Reserva memória de forma persistente, desta forma podemos retornar essa variável
+    static char relatorio[1000]{0};
+    char aux[1000];
+
+    strcpy(relatorio, "");
+    strcpy(aux, "");
+    
+    // Guarda os dados do cliente com uma string em aux
+    sprintf(aux, "Nome: %s e CPF: %s\n", nome, cpf);
+
+    // Concatena em relatório
+    strcat(relatorio, aux);
+
+    // Concatena os dados das contas do cliente em relatório usanda a variável aux
+    for (i = 0; i < 13; i++)
     {
-        //aux = strcat(, " ");
-        //relatorio = strcat(relatorio, aux);
-        i++;
+        if (contas[i] == nullptr)
+            continue;
+        if(i < 3)
+            sprintf(aux, "Conta %d (TITULAR): -> Número da conta: %d | Saldo da conta: R$ %.2f\n", j, contas[i]->getNumero(), contas[i]->getSaldo());
+        else 
+            sprintf(aux, "Conta %d: -> Número da conta: %d | Saldo da conta: R$ %.2f\n", j, contas[i]->getNumero(), contas[i]->getSaldo());
+        strcat(relatorio, aux);
+        j++;
     }
+    if (i == 0)
+        strcat(relatorio, "Sem contas criadas.\n");
+    strcat(relatorio, "\n");
+
     return relatorio;
 }
 
-void Cliente::aplicarRecursos(int num, float valor)
+// Permite o cliente depositar ser um certo valor em uma conta
+void Cliente::aplicarRecursos(int _numConta, double _valor)
 {
-    int i = 0;
-
-    while(contas[i]->getNumero() != num && i < 3)
-    {
-        i++;
+    // Só é possível aplicar recursos com valores positivos
+    if (_valor <= 0) {
+        cout << "Valor de depósito inválido: " << _valor << endl;
+        return;
     }
 
-    if(i == 3)
-        cout << "A conta com o nÃºmero " << num << " nÃ£o existe!" << endl;
-    else
-    {
-        contas[i]->depositar(valor);
+    /*
+    * Acha a conta e deposita os recursos.
+    * Note que o cliente pode depositar recursos 
+    * em qualquer conta que em que ele está associado,
+    * independente se é o titular ou não.
+    */
+    for (int i = 0; i < 13; i++) {
+        /* 
+        * Se o ponteiro foi vinculado a um objeto conta e o número da conta 
+        * corresponder ao fornecido, realiza-se o depósito.
+        */
+        if (contas[i] && contas[i]->getNumero() == _numConta) {
+            contas[i]->depositar(_valor);
+            return;
+        }
     }
+
+    cout << "O cliente não possui uma conta com o número " << _numConta << endl;
+    return;    
 }
 
+void Cliente::sacarRecursos(int _numConta, double _valor)
+{
+    //Só é possível sacar valores positivos 
+    if (_valor <= 0) {
+        cout << "Valor de saque inválido: " << _valor << endl;
+        return;
+    }
 
+    /*
+    * Acha a conta e saca os recursos, se estiverem disponíveis.
+    * Note que nessa implementação o cliente pode sacar recursos 
+    * em qualquer conta que em que ele está associado,
+    * independente se é o titular ou não.
+    */
+    for (int i = 0; i < 13; i++) {
+        /*
+        * Se o ponteiro foi vinculado a um objeto conta e o número da conta
+        * corresponder ao fornecido, realiza-se o depósito.
+        */
+        if (contas[i] && contas[i]->getNumero() == _numConta) {
+            if (contas[i]->getSaldo() >= _valor) {
+                contas[i]->sacar(_valor);
+            }
+            else {
+                cout << "Saldo indisponível para saque: " << _valor << endl;
+            }
+            return;
+        }
+    }
+    
+    cout << "O cliente não possui uma conta com o número " << _numConta << endl;
+    return;
+}
