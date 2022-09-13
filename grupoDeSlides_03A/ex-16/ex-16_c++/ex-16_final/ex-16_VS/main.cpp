@@ -1,5 +1,8 @@
 //Monitor: Thiago Henrique Frois Menon Cunha
-//Data: Semestre 2022/1
+//Data: Semestre 2022
+//Monitor: Ian Willian Bolfarini 
+//Data: Semestre 2022/2
+//Ajustes na lógica e comentários
 
 #include "Principal.hpp"
 
