@@ -2,8 +2,10 @@
 
 #include <iostream>
 #include <cstring>
+#include <string>
 #include "Conta.hpp"
 
+using std::string;
 using std::cout;
 using std::endl;
 class Cliente
@@ -33,7 +35,7 @@ public:
     ~Cliente();
 
     // Retorna um string com o relatório do cliente
-    const char* gerarRelatorio();
+    string gerarRelatorio();
 
     // Deposita um certo valor no número da conta dado
     void aplicarRecursos(int _numConta, double _valor);

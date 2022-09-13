@@ -52,12 +52,12 @@ void Cliente::criarConta(Conta* _conta)
     numContasT++;
 }
 
-const char* Cliente::gerarRelatorio()
+string Cliente::gerarRelatorio()
 {
     int i = 0, j = 1;
     //Reserva memória de forma persistente, desta forma podemos retornar essa variável
-    static char relatorio[1000]{0};
-    char aux[1000]{0};
+    char relatorio[1000];
+    char aux[1000];
 
     strcpy(relatorio, "");
     strcpy(aux, "");

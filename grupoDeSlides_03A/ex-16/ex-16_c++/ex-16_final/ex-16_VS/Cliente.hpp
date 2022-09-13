@@ -1,6 +1,9 @@
 #pragma once
 
 #include "Conta.hpp"
+#include <string>
+
+using namespace std;
 
 class Cliente
 {
@@ -29,7 +32,7 @@ public:
     ~Cliente();
 
     // Retorna um string com o relatório do cliente
-    const char* gerarRelatorio();
+    string gerarRelatorio();
 
     // Deposita um certo valor no número da conta dado
     void aplicarRecursos(int _numConta, double _valor);
