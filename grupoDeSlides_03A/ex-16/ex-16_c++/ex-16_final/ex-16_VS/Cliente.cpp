@@ -23,6 +23,9 @@ Cliente::~Cliente()
 // Víncula o cliente a uma conta já criada
 void Cliente::vincularConta(Conta* _conta)
 {
+    if (!_conta)
+        return;
+
     if (_conta->getNumUsuarios() == 2) 
     {
         cout << "O número máximo de clientes nessa conta já foi atingido." << endl;
@@ -86,18 +89,66 @@ const char* Cliente::gerarRelatorio()
 // Permite o cliente depositar ser um certo valor em uma conta
 void Cliente::aplicarRecursos(int _numConta, double _valor)
 {
-    int i = 0;
-  
-    // Acha a conta
-    while (contas[i]->getNumero() != _numConta && i < 3)
-    {
-        i++;
-    }
-
-    if (i == 3)
-    {
-        cout << "O cliente não possui uma conta com o número " << _numConta << endl;
+    // Só é possível aplicar recursos com valores positivos
+    if (_valor <= 0) {
+        cout << "Valor de depósito inválido: " << _valor << endl;
         return;
     }
-    contas[i]->depositar(_valor);
+
+    /*
+    * Acha a conta e deposita os recursos.
+    * Note que o cliente pode depositar recursos 
+    * em qualquer conta que em que ele está associado,
+    * independente se é o titular ou não.
+    */
+    for (int i = 0; i < 13; i++) {
+        /* 
+        * Se o ponteiro foi vinculado a um objeto conta e o número da conta 
+        * corresponder ao fornecido, realiza-se o depósito.
+        */
+        if (contas[i] && contas[i]->getNumero() == _numConta) {
+            contas[i]->depositar(_valor);
+            return;
+        }
+    }
+
+    cout << "O cliente não possui uma conta com o número " << _numConta << endl;
+    return;    
 }
+
+void Cliente::sacarRecursos(int _numConta, double _valor)
+{
+    //Só é possível sacar valores positivos 
+    if (_valor <= 0) {
+        cout << "Valor de saque inválido: " << _valor << endl;
+        return;
+    }
+
+    /*
+    * Acha a conta e saca os recursos, se estiverem disponíveis.
+    * Note que nessa implementação o cliente pode sacar recursos 
+    * em qualquer conta que em que ele está associado,
+    * independente se é o titular ou não.
+    */
+    for (int i = 0; i < 13; i++) {
+        /*
+        * Se o ponteiro foi vinculado a um objeto conta e o número da conta
+        * corresponder ao fornecido, realiza-se o depósito.
+        */
+        if (contas[i] && contas[i]->getNumero() == _numConta) {
+            if (contas[i]->getSaldo() >= _valor) {
+                contas[i]->sacar(_valor);
+            }
+            else {
+                cout << "Saldo indisponível para saque: " << _valor << endl;
+            }
+            return;
+        }
+    }
+    
+    cout << "O cliente não possui uma conta com o número " << _numConta << endl;
+    return;
+}
+
+
+
