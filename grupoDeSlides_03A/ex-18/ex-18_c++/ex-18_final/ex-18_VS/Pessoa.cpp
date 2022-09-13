@@ -25,7 +25,7 @@ void Pessoa::setIdade(int _diaAt, int _mesAt, int _anoAt)
 
 bool Pessoa::setDia(int _dia)
 {
-    if (_dia < 0 || _dia > 31)
+    if (_dia < 1 || _dia > 31)
     {
         cout << "Dia incorreto!" << endl;
         return false;
