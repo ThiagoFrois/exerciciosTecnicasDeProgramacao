@@ -4,7 +4,7 @@ class PolReg
 {
 public:
 	double CalcPerimetro();
-	virtual double CalcArea();
+	virtual double CalcArea() = 0;
 	double CalcAngulo();
 
 	int GetNumLados();

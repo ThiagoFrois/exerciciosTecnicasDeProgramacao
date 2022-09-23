@@ -12,6 +12,5 @@ public:
 
 	Principal();
 	~Principal();
-private:
-	PolReg *p_poligono;
+
 };
